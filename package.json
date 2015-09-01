@@ -1,0 +1,19 @@
+{
+  "name": "zero-roof",
+  "version": "0.0.1",
+  "keywords": [
+    "zero module"
+  ],
+  "description": "Roof connector module for Zero.",
+  "zero": {
+    "dependencies": {
+      "theme-react": "^0.0.1",
+      "request": "^0.0.1",
+      "bus": "^0.0.1"
+    }
+  },
+  "author": "jiamiu",
+  "dependencies": {
+    "lodash": "~3.10.0"
+  }
+}
