@@ -1,6 +1,6 @@
 {
   "name": "zero-roof",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": [
     "zero module"
   ],
@@ -8,8 +8,8 @@
   "zero": {
     "dependencies": {
       "theme-react": "^0.0.1",
-      "request": "^0.0.1",
-      "bus": "^0.0.1"
+      "request": "^0.2.0",
+      "bus": "^0.2.0"
     }
   },
   "author": "jiamiu",
