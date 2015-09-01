@@ -15,5 +15,19 @@
   "author": "jiamiu",
   "dependencies": {
     "lodash": "~3.10.0"
-  }
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sskyy/zero-roof.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sskyy/zero-roof/issues"
+  },
+  "homepage": "https://github.com/sskyy/zero-roof#readme"
 }
