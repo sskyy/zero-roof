@@ -9,12 +9,14 @@
     "dependencies": {
       "theme-react": "^0.0.1",
       "request": "^0.2.0",
+      "taurus": "^0.0.2",
       "bus": "^0.2.0"
     }
   },
   "author": "jiamiu",
   "dependencies": {
-    "lodash": "~3.10.0"
+    "lodash": "~3.10.0",
+    "lodash.clonedeep": "~3.0.2"
   },
   "main": "index.js",
   "devDependencies": {},
