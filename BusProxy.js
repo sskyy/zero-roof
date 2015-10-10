@@ -8,7 +8,7 @@ BusProxy.prototype.on = function(name, listener){
 
   if( typeof listener === 'function' ){
     listener = {
-      fn : listener,
+      fn : listener
     }
   }
 

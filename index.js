@@ -7,7 +7,7 @@ var co = require('co')
 var BusError = require('roof-bus/lib/error')
 
 function isGenerator(fn) {
-  return fn.constructor.name === 'GeneratorFunction';
+  return fn && fn.constructor.name === 'GeneratorFunction';
 }
 
 function extendObject(obj, key, handler) {
@@ -124,7 +124,6 @@ var roofModule = {
 
 
               //扩展 context,告诉前端可用的服务器端事件
-              //console.log('bus proxy', busProxy.events)
               root.extendContext(moduleProxy.entries.spec, entryName, busProxy.events, relierName)
 
               //记录一下 spec
@@ -175,10 +174,16 @@ var roofModule = {
       }
 
       if (typeof _context === 'function') {
-        return function () {
-          return _.extend(_context(), newContext)
+        return function roofExtendedContext(){
+          console.log(`this entry ${entryName} has context fn.`)
+          return _.extend(_context.call(this), newContext)
         }
-      } else {
+      } else if( isGenerator(_context)){
+        return function *roofExtendedContext(){
+          return _.extend( yield _context.call(this), newContext)
+        }
+      }else{
+        console.log(`this entry ${entryName} has context object.`)
         return _.extend(_context || {}, newContext)
       }
     })
@@ -201,7 +206,7 @@ var roofModule = {
 
       if (initializer === undefined) return this.body = `wrong initializer index ${initializerIndex}`
 
-      var galaxies = new Galaxies(roofModule.backendHandler, spec.types)
+      var galaxies = new Galaxies(roofModule.backendHandler.bind(roofModule, moduleName), spec.types)
       var eventAndListeners = initializer(galaxies, galaxies.types)
 
       var listeners = _.isArray(eventAndListeners[eventName]) ? eventAndListeners[eventName] : [eventAndListeners[eventName]]
@@ -233,7 +238,6 @@ var roofModule = {
 
       //Todo 缺 runtime 的当前 data 信息
       //Todo 缺 runtime 的global data 信息
-      console.log('resopond session', that.session)
       that.body = {
         runtime: {
           data: result && result.data.valueOf(),
@@ -251,9 +255,9 @@ var roofModule = {
     }
   },
   parseArgs: parseArgs,
-  backendHandler: function (type, args) {
+  backendHandler: function (moduleName, type, args) {
     //TODO roof-zeroql 不支持 generator
-    var taurus = roofModule.deps.taurus.getCollection('centurion')
+    var taurus = roofModule.deps.taurus.getCollection(moduleName)
     return co(function *() {
       if (type === 'query') {
         let result = {}
