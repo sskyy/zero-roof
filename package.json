@@ -1,16 +1,16 @@
 {
   "name": "zero-roof",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": [
     "zero module"
   ],
   "description": "Roof connector module for Zero.",
   "zero": {
     "dependencies": {
-      "theme-react": "^0.0.1",
-      "request": "^0.2.0",
-      "taurus": "^0.0.2",
-      "bus": "^0.2.0"
+      "theme-react": "~0.0.1",
+      "request": "~0.2.0",
+      "taurus": "~0.0.2",
+      "bus": "~0.2.0"
     }
   },
   "author": "jiamiu",

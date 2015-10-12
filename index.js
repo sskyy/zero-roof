@@ -215,9 +215,6 @@ var roofModule = {
 
       if (listenerFn === undefined) return this.body = `wrong listener index ${listenerIndex}`
 
-      //TODO 浏览器端的名字如何和当前名字匹配？
-
-
       args = roofModule.parseArgs(this.request.body.args, spec.types)
       //构造事件栈，为了得到 stack
 
@@ -230,7 +227,7 @@ var roofModule = {
       }
 
 
-      console.log('bridge result', result)
+      //console.log('bridge result', result)
 
       //Todo 变成 EJON?
       //TODO 这里是固定的名字，是否不好
